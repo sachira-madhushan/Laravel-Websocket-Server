@@ -14,12 +14,12 @@ class NotificationEvent implements shouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $data;
+    public $title;
     public $description;
 
-    public function __construct($data,$description)
+    public function __construct($title,$description)
     {
-        $this->data = $title;
+        $this->title = $title;
         $this->description = $description;
     }
 

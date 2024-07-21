@@ -7,18 +7,18 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    public function sendNotification()
+    public function send_notification(Request $req)
     {
-        $title = 'Title';
-        $description = 'Description';
+        $title = $req->title;
+        $description = $req->description;
 
         try {
-            event(new NotificationEvent($title,$descption));
+            event(new NotificationEvent($title,$description));
 
         } catch (\Throwable $th) {
-            return response()->json(['status' => 'Error']);
+            return response()->json(['status' => 'Error while broadcast']);
         }
 
-        return response()->json(['status' => 'Event broadcasted']);
+        return response()->json(['status' => 'Notification broadcasted']);
     }
 }
